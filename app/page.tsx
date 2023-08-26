@@ -1,9 +1,20 @@
-import { Button } from '@/components/ui/button'
 
-export default function Home() {
+import { Container } from "@/components/container";
+import { Nav } from "@/components/nav";
+
+export default async function App() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-        <Button>Ardor Blog</Button>
-    </main>
+    <div>{(
+      <>
+        <nav className="flex  flex-col items-center justify-between p-24">
+          <Nav />
+        </nav>
+        <main className="flex min-h-screen flex-col items-center justify-between p-24">
+          <Container />
+        </main>
+      </>
+    )
+    }
+    </div>
   )
 }
