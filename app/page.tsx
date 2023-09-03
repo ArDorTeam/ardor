@@ -1,9 +1,11 @@
-import { Button } from '@/components/ui/button'
+import Content from "./components/content"
+import Lastst from "./components/latest"
 
 export default function Home() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-        <Button>Ardor Blog</Button>
-    </main>
-  )
+    return (
+        <main className="flex-col items-center justify-between min-h-screen mx-auto max-w-7xl py-[8rem] flex">
+            <Lastst></Lastst>
+            <Content></Content>
+        </main>
+    )
 }

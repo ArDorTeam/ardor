@@ -4,6 +4,7 @@
     "source.fixAll": true,
     "source.organizeImports": true
   },
+  "editor.defaultFormatter":"esbenp.prettier-vscode",
   "[css]": {
     "editor.defaultFormatter": "stylelint.vscode-stylelint"
   }

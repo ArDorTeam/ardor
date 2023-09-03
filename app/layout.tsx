@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Header from './components/header'
 import './styles/globals.scss'
 
 
@@ -13,8 +14,9 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html>
-      <body>{children}</body>
-    </html>
+    <>
+      <Header />
+       <div>{children}</div>
+    </>
   )
 }
