@@ -43,6 +43,7 @@
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-tailwindcss": "^3.11.0",
+    "http-proxy-middleware": "^2.0.6",
     "husky": "^8.0.3",
     "prettier": "^3.0.2",
     "prettier-plugin-tailwindcss": "^0.1.13",
