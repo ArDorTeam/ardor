@@ -15,10 +15,10 @@ import {
 
 function Screen() {
   return (
-    <div>
+    <div className="w-full">
       {(
         <>
-          <div id={SlotID.AppBody}>
+          <div className="w-full" id={SlotID.AppBody}>
             <Routes>
               <Route path={Path.Home} element={<Home />} />
               <Route path={Path.Article} element={<Article />} />

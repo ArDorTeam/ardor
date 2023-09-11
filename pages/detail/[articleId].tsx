@@ -1,5 +1,7 @@
+import articleDetail from "@/mock/articleDetail";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+
 
 
 
@@ -14,10 +16,13 @@ type ArticleTypeProps = {
 // 示例
 type ArticleType = {
     article_id: string;
-    article_type: string;
+    title: string;
     content: string;
-    cover_url: string;
-    gmt_create: string;
+    author: string;
+    published_at: string;
+    group: string;
+    tags: Array<string>;
+    title_img: string;
 };
 
 
@@ -25,13 +30,17 @@ type ArticleType = {
 const DetailPage: React.FC<ArticleTypeProps> = ({ post }) => {
     const [somePostData, setSomePostData] = useState<ArticleType | null>({
         article_id: '',
-        article_type: '',
+        title: '',
         content: '',
-        cover_url: '',
-        gmt_create: ''
+        author: '',
+        published_at: '',
+        group: '',
+        tags: [],
+        title_img: ''
     });
     const { articleId } = useParams(); // 拿路由id
     console.log(articleId);
+
 
 
     useEffect(() => {
@@ -53,11 +62,9 @@ const DetailPage: React.FC<ArticleTypeProps> = ({ post }) => {
 
                     // 这里是测试示例
                     setSomePostData({
-                        article_id: articleId + 'article_id',
-                        article_type: articleId + 'article_type',
-                        content: articleId + 'content',
-                        cover_url: articleId + 'cover_url',
-                        gmt_create: articleId + 'gmt_create',
+                        article_id: articleId,
+                        title: articleId + "示例博客文章",
+                        ...articleDetail // 示例，会删掉
                     } as ArticleType)
                 }
             } catch (error: any) {
@@ -74,11 +81,19 @@ const DetailPage: React.FC<ArticleTypeProps> = ({ post }) => {
     }
 
     return (
-        <div>
-            <h1>{somePostData.article_id}</h1>
-            <p>{somePostData.article_type}</p>
-            <p>{somePostData.cover_url}</p>
-            <div dangerouslySetInnerHTML={{ __html: somePostData.content }} />
+        <div >
+            <header className="px-40">
+                <div className="text-gray-500  text-lg font-medium leading-none mb-8 uppercase box-border" >
+                    By <span className="text-black">{somePostData.author}</span> in <span className="text-link-color" >{somePostData.group}</span> —  <span>{somePostData.published_at}</span>
+                </div>
+                <h1 className='text-7xl font-semibold leading-none'>{somePostData.title}</h1>
+                <figure className="mt-10">
+                    <img src={somePostData.title_img} alt="示例图像" />
+                </figure>
+            </header>
+            <section className="mt-16 break-word px-80">
+                <div className="min-h-screen" dangerouslySetInnerHTML={{ __html: somePostData.content }} />
+            </section>
         </div>
     );
 };

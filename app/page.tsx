@@ -9,7 +9,7 @@ export default async function App() {
         <nav className="flex  flex-col items-center justify-between p-24">
           <Nav />
         </nav>
-        <main className="flex min-h-screen flex-col items-center justify-between p-24">
+        <main className="flex min-h-screen flex-col items-center justify-between">
           <Container />
         </main>
       </>
