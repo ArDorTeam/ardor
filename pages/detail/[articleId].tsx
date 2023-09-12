@@ -74,7 +74,7 @@ const DetailPage: React.FC<ArticleTypeProps> = ({ post }) => {
 
         // 调用 fetchDetailData 函数来获取数据
         fetchDetailData();
-    }, [post]);
+    }, [post, articleId]);
 
     if (!somePostData) {
         return <div>Loading...</div>;
