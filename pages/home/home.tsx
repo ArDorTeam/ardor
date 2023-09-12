@@ -1,6 +1,6 @@
 // import { Button } from '@/components/ui/button';
 
-import { Path } from "@/app/constant";
+// import { Path } from "@/app/constant";
 import { fetchAPI } from "@/utils/request";
 import { Link } from "react-router-dom";
 
@@ -9,9 +9,18 @@ export function Home() {
         <div>
             <button onClick={fetchData}>获取数据</button>
             <h3>我是Home的内容</h3>
-            <Link to={Path.About}>
-                to About
-            </Link>
+            <h1>
+                <Link to="/detail/post-1">Go to detail Post 1</Link>
+            </h1>
+            <h1>
+                <Link to="/detail/post-2">Go to detail Post 2</Link>
+            </h1>
+            <h1>
+                <Link to="/detail/post-3">Go to detail Post 3</Link>
+            </h1>
+            <h1>
+                <Link to="/detail/post-4">Go to detail Post 4</Link>
+            </h1>
         </div>
     );
 }
