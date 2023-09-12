@@ -4,7 +4,7 @@ export default async function App() {
         <div>
             {
                 <>
-                    <main className="flex flex-col items-center justify-between min-h-screen p-24">
+                    <main className="flex flex-col items-center justify-between min-h-screen">
                         <Container />
                     </main>
                 </>

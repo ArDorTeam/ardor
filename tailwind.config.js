@@ -17,6 +17,7 @@ module.exports = {
     },
     extend: {
       colors: {
+        'link-color': "#002bff", // link color链接蓝色
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

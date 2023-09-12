@@ -2,6 +2,7 @@ export enum Path {
     Home = "/",
     About = "/about",
     Article = "/article",
+    Detail = "/detail/:articleId",
 }
 
 
