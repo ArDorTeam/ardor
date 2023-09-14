@@ -82,7 +82,7 @@ const DetailPage: React.FC<ArticleTypeProps> = ({ post }) => {
 
     return (
         <div >
-            <header className="px-40">
+            <header className="px-40 pt-10">
                 <div className="text-gray-500  text-lg font-medium leading-none mb-8 uppercase box-border" >
                     By <span className="text-black">{somePostData.author}</span> in <span className="text-link-color" >{somePostData.group}</span> —  <span>{somePostData.published_at}</span>
                 </div>

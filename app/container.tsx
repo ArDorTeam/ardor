@@ -1,14 +1,15 @@
 
 "use client";
-import { Path, SlotID } from "@/app/constant"; // 路由列表
-import { About } from "@/pages/about/about";
+import Nav from "@/components/nav";
+import { Path, SlotID } from "@/lib/global"; // 路由列表
+import About from "@/pages/about/about";
 import { Article } from "@/pages/article/article";
 import DetailPage from "@/pages/detail/[articleId]";
 import { Home } from "@/pages/home/home";
 import { useEffect, useState } from "react";
 import {
   Route,
-  HashRouter as Router,
+  BrowserRouter as Router,
   Routes,
 } from "react-router-dom";
 
@@ -17,7 +18,9 @@ function Screen() {
   return (
     <div className="w-full">
       {(
+        // 因为里面有遍历Link,所以要包在router里面
         <>
+          <Nav />
           <div className="w-full" id={SlotID.AppBody}>
             <Routes>
               <Route path={Path.Home} element={<Home />} />
