@@ -1,4 +1,3 @@
-// 创建一个简单的请求方法api.ts
 
 // 创建一个通用的 API 响应类型
 type ApiResponse<T> = {
@@ -22,6 +21,7 @@ export const fetchAPI = async <T>(
 
     const headers = {
         'Content-Type': 'application/json',
+        'Content-Length': '1024',
         // 如果需要授权，可以在这里添加授权头部
         // 'Authorization': `Bearer ${accessToken}`,
     };
@@ -39,7 +39,7 @@ export const fetchAPI = async <T>(
 
     const requestOptions: RequestInit = {
         method: options.method,
-        // headers,
+        headers,
     };
 
     if (options.data) {
@@ -48,6 +48,8 @@ export const fetchAPI = async <T>(
 
     try {
         // const response = await fetch(`${apiUrl}/${endpoint}`, requestOptions);
+        console.log(requestOptions);
+
         const response = await fetch(`${endpoint}`, requestOptions);
         const responseData = await response.json();
 
@@ -55,26 +57,9 @@ export const fetchAPI = async <T>(
             throw new Error(responseData.error || '请求失败');
         }
 
-        return { success: true, data: responseData };
+        return { success: true, data: responseData.data };
     } catch (error: any) {
         return { success: false, error: error.message || '请求失败' };
     }
 };
 
-
-// // // 例如，获取数据的示例
-// const fetchData = async () => {
-//     try {
-//         const options = {
-//             method: 'POST' as const, // POST 请求
-//         };
-//         const response = await fetchAPI('/api/v1/article/getArticleList', options); // 替换为实际的 API 端点和数据类型
-//         if (response.success) {
-//             console.log('成功获取数据：', response.data);
-//         } else {
-//             console.error('获取数据失败：', response.error);
-//         }
-//     } catch (error: any) {
-//         console.error('获取数据失败：', error.message);
-//     }
-// };
