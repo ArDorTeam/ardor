@@ -1,10 +1,45 @@
-// import { Button } from '@/components/ui/button';
+// import { NAV_LISTS } from "@/lib/global";
+// console.log(NAV_LISTS);
+import { Link } from 'react-router-dom'
+const arr = [
+    {
+        label: "HOME",
+        value: "/"
+    },
+    {
+        label: "ABOUT",
+        value: "/about"
+    },
+    {
+        label: "STYLE GUIDE",
+        value: "/styleGuide"
+    },
+    {
+        label: "AUTHOR",
+        value: "/author"
+    },
+    {
+        label: "COLLECTION",
+        value: "/collection"
+    }
+]
 
 
-export function Nav() {
+const Nav = () => {
     return (
-        <div>
-            <h3>THIS IS NAV</h3>
+        <div className="flex items-center justify-center border-y h-14">
+            <div className="flex" style={{ columnGap: 20 }}>
+                {arr.map(it => {
+                    return (
+                        <div key={it.value} className='mr-5 ml-5'>
+                            <Link className="cursor-pointer  hover:text-zinc-500" to={it.value} >
+                                {it.label}
+                            </Link>
+                        </div>
+                    )
+                })}
+            </div>
         </div>
-    );
+    )
 }
+export default Nav

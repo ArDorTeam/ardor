@@ -1,5 +1,6 @@
-import type { Metadata } from 'next'
-import './styles/globals.scss'
+import type { Metadata } from 'next';
+import Header from "../components/header";
+import './styles/globals.scss';
 
 
 export const metadata: Metadata = {
@@ -14,7 +15,12 @@ export default function RootLayout({
 }) {
   return (
     <html>
-      <body>{children}</body>
+      <body>
+        <Header />
+        <div>
+          {children}
+        </div>
+      </body>
     </html>
   )
 }
