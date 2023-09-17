@@ -1,0 +1,29 @@
+.title{
+    @apply text-sm mb-[2.4rem] flex items-center;
+    &::after{
+        @apply bg-gray-200 ml-4;
+        content: '';
+        height: 1px;
+        flex: 1;
+    }
+    &:not(:first-child){
+        @apply mt-16;
+    }
+}
+.item{
+    &+.item{
+        margin-top: 6rem;
+    }
+}
+.miniItem{
+    &+.miniItem{
+        margin-top: 2rem;
+    }
+}
+
+.topicItem{
+    @apply flex items-center justify-between cursor-pointer hover:text-zinc-500;
+    &+&{
+        @apply mt-4
+    }
+}
