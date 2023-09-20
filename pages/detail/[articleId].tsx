@@ -42,7 +42,7 @@ const DetailPage: React.FC<ArticleTypeProps> = ({ post }) => {
 
         // 调用 fetchDetailData 函数来获取数据
         fetchDetailData();
-    }, [post]);
+    }, [articleId]);
 
     if (!somePostData) {
         return <div>Loading...</div>;
@@ -51,15 +51,15 @@ const DetailPage: React.FC<ArticleTypeProps> = ({ post }) => {
     return (
         <div >
             <header className="px-40 pt-10">
-                <div className="text-gray-500  text-lg font-medium leading-none mb-8 uppercase box-border" >
+                <div className="box-border mb-8 text-lg font-medium leading-none text-gray-500 uppercase" >
                     By <span className="text-black">{somePostData.article_id}</span> in <span className="text-link-color" >{somePostData.group}</span> —  <span>{somePostData.gmt_modified}</span>
                 </div>
-                <h1 className='text-7xl font-semibold leading-none'>{somePostData.title}</h1>
+                <h1 className='font-semibold leading-none text-7xl'>{somePostData.title}</h1>
                 <figure className="mt-10">
                     <img src={somePostData.cover_url} alt="示例图像" />
                 </figure>
             </header>
-            <section className="mt-16 break-word px-80">
+            <section className="mt-16 px-80">
                 <div className="min-h-screen" dangerouslySetInnerHTML={{ __html: somePostData.content }} />
             </section>
         </div>

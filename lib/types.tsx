@@ -1,31 +1,32 @@
 export type ArticleType = {
-    article_id: String,
-    article_type: String,
-    title: String,
-    sub_title: String,
-    cover_url: String,
-    content: String,
-    visits: String,
+    article_id: string,
+    article_type: string,
+    title: string,
+    sub_title: string,
+    cover_url: string,
+    content: string,
+    visits: string,
     is_recommend: Boolean,
-    sort_id: String,
+    sort_id: string,
     status: Boolean,
-    gmt_create: String,
-    gmt_modified: String
+    gmt_create: string,
+    gmt_modified: string,
+    group: string
 };
 
 export type ListItemType = {
-    id: String | undefined,
-    article_id: String,
-    article_type: String,
-    title: String,
-    sub_title: String,
-    cover_url: String,
-    visits: String,
+    id: string | undefined,
+    article_id: string,
+    article_type: string,
+    title: string,
+    sub_title: string,
+    cover_url: string,
+    visits: string,
     is_recommend: Boolean,
-    sort_id: String,
+    sort_id: string,
     status: Boolean,
-    gmt_create: String,
-    gmt_modified: String
+    gmt_create: string,
+    gmt_modified: string
 }
 
 export type ListType = {

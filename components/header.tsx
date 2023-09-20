@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button"
 import { ROOT_TITLE } from "@/lib/global"
-// import { EnvelopeOpenIcon } from "@radix-ui/react-icons"
+import { EnvelopeOpenIcon } from "@radix-ui/react-icons"
 // import Nav from "./nav"
 export default function Header() {
     return (
@@ -11,7 +11,7 @@ export default function Header() {
                 <div>
                     <span className="mr-5 cursor-pointer hover:text-zinc-500">SIGN IN</span>
                     <Button>
-                        {/* <EnvelopeOpenIcon className="w-4 h-4 mr-2" /> Subscribe */}
+                        <EnvelopeOpenIcon className="w-4 h-4 mr-2" /> Subscribe
                     </Button>
                 </div>
             </div>
