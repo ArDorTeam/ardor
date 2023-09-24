@@ -1,13 +1,15 @@
+import { ListItemType } from "@/lib/types";
+import dayjs from 'dayjs';
+import { useState } from 'react';
 import styles from "./home.module.scss";
 
 interface ItemProps {
-  info: {
-    date: string;
-    title: string;
-    content: string;
-    readTime: string;
-  };
+  info: ListItemType;
   mini?: boolean;
+}
+
+interface listInf {
+  list:ListItemType[] | undefined
 }
 
 export function Item({ info, mini = false }: ItemProps) {
@@ -18,49 +20,26 @@ export function Item({ info, mini = false }: ItemProps) {
   return (
     <div className={itemClassName}>
       <h2 className={titleClassName}>{info.title}</h2>
-      <div className={contentClassName}>{info.content}</div>
+      <div className={contentClassName}>{info.sub_title}</div>
       <div className="flex items-center gap-1 mt-6 text-sm">
-        <span className="text-blue-600/100">{info.date}</span>
-        <span className="text-zinc-400">{info.readTime} READ</span>
+        <span className="text-blue-600/100">{dayjs(info.gmt_modified).format('YYYY-MM-DD')}</span>
+        <span className="text-zinc-400">{info.visits} READ</span>
       </div>
     </div>
   );
 }
 
-export default function More() {
-  const list = [
-    {
-      date: "JUN 28, 2021",
-      title: "Start here for a quick overview of everything you need to know",
-      content: "We've crammed the most important information to help you get started with Ghost into this one post. It's your cheat-sheet to get started, and your shortcut to advanced features.",
-      readTime: "2 min"
-    },
-    {
-      date: "JUN 28, 2021",
-      title: "Start here for a quick overview of everything you need to know",
-      content: "We've crammed the most important information to help you get started with Ghost into this one post. It's your cheat-sheet to get started, and your shortcut to advanced features.",
-      readTime: "2 min"
-    },
-    {
-      date: "JUN 28, 2021",
-      title: "Start here for a quick overview of everything you need to know",
-      content: "We've crammed the most important information to help you get started with Ghost into this one post. It's your cheat-sheet to get started, and your shortcut to advanced features.",
-      readTime: "2 min"
-    },
-    {
-      date: "JUN 28, 2021",
-      title: "Start here for a quick overview of everything you need to know",
-      content: "We've crammed the most important information to help you get started with Ghost into this one post. It's your cheat-sheet to get started, and your shortcut to advanced features.",
-      readTime: "2 min"
-    }
-  ];
-
+export default function More({list}:listInf) {
+  const length = 10
+  const [offset,setOffset] = useState(1)
+  const count = length * offset
   return (
     <div>
       <div className={styles.title}>MORE ISSUES</div>
-      {list.map((it) => (
-        <Item key={it.date} info={it} />
+      {list && list.slice(0,count).map((it) => (
+        <Item key={it.id} info={it} />
       ))}
+      {list && list.length > count && <div className='mt-6 text-center cursor-pointer text-zinc-400 hover:text-gray-500' onClick={()=>setOffset(offset+1)}>点击加载更多</div>}
     </div>
   );
 }

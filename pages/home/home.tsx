@@ -29,7 +29,7 @@ export function Home() {
                     if (response.data) {
                         const responseData = response.data;
                         setList(responseData.list); // 列表数据
-                        setLastData(responseData.list[0]); // 最新数据
+                        setLastData(responseData.list?.[0]); // 最新数据
                     }
                 } else {
                     console.error('获取数据失败：', response.error);
@@ -43,13 +43,12 @@ export function Home() {
         getList();
     }, []);
 
-    console.log(LastData);
 
 
     return (
         <main className="flex-col items-center justify-between min-h-screen mx-auto max-w-7xl py-[8rem] flex">
-            <Lastst {...LastData} ></Lastst>
-            <Content></Content>
+            <Lastst data={LastData} ></Lastst>
+            <Content list={List}></Content>
         </main>
     )
 }

@@ -31,8 +31,8 @@ const Nav = () => {
             <div className="flex" style={{ columnGap: 20 }}>
                 {arr.map(it => {
                     return (
-                        <div key={it.value} className='mr-5 ml-5'>
-                            <Link className="cursor-pointer  hover:text-zinc-500" to={it.value} >
+                        <div key={it.value} className='mx-5'>
+                            <Link className="cursor-pointer hover:text-zinc-500" to={it.value} >
                                 {it.label}
                             </Link>
                         </div>
