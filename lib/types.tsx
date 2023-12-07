@@ -10,7 +10,8 @@ export type ArticleType = {
     sort_id: String,
     status: Boolean,
     gmt_create: String,
-    gmt_modified: String
+    gmt_modified: String,
+    group?: any
 };
 
 export type ListItemType = {
