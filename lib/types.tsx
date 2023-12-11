@@ -1,35 +1,35 @@
 export type ArticleType = {
-    article_id: String,
-    article_type: String,
-    title: String,
-    sub_title: String,
-    cover_url: String,
-    content: String,
-    visits: String,
-    is_recommend: Boolean,
-    sort_id: String,
-    status: Boolean,
-    gmt_create: String,
-    gmt_modified: String,
+    article_id: string,
+    article_type: string,
+    title: string,
+    sub_title: string,
+    cover_url: string,
+    content: string,
+    visits: string,
+    is_recommend: boolean,
+    sort_id: string,
+    status: boolean,
+    gmt_create: string,
+    gmt_modified: string,
     group?: any
 };
 
 export type ListItemType = {
-    id: String | undefined,
-    article_id: String,
-    article_type: String,
-    title: String,
-    sub_title: String,
-    cover_url: String,
-    visits: String,
-    is_recommend: Boolean,
-    sort_id: String,
-    status: Boolean,
-    gmt_create: String,
-    gmt_modified: String
+    id?: string;
+    article_id?: string;
+    article_type?: string;
+    title?: string;
+    sub_title?: string;
+    cover_url?: string;
+    visits?: string;
+    is_recommend?: boolean;
+    sort_id?: string;
+    status?: boolean;
+    gmt_create?: string;
+    gmt_modified?: string;
 }
 
 export type ListType = {
     list: Array<ListItemType>,
-    totoal: Number
+    totoal: number
 }
