@@ -56,7 +56,7 @@ const DetailPage: React.FC<ArticleTypeProps> = ({ post }) => {
                 </div>
                 <h1 className='text-7xl font-semibold leading-none'>{somePostData.title}</h1>
                 <figure className="mt-10">
-                    <image src={somePostData.cover_url} alt="示例图像" />
+                    <image href={somePostData.cover_url}  />
                 </figure>
             </header>
             <section className="mt-16 break-word px-80">
