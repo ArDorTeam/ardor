@@ -7,7 +7,7 @@ import { fetchAPI } from "@/utils/request";
 import { useEffect, useState } from "react";
 
 
-export function Home() {
+export default function Home() {
     const [List, setList] = useState<ListItemType[]>([]);
     const [LastData, setLastData] = useState<ListItemType>();
     useEffect(() => {
@@ -53,6 +53,3 @@ export function Home() {
         </main>
     )
 }
-
-
-
