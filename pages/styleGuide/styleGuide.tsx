@@ -1,6 +1,4 @@
 
-import { Link } from "react-router-dom";
-import { Path } from "../../app/constant";
 
 const styleGuide = () => {
     return (
