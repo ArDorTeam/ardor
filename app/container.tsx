@@ -3,9 +3,9 @@
 import Nav from "@/components/nav";
 import { Path, SlotID } from "@/lib/global"; // 路由列表
 import About from "@/pages/about/about";
-import { Article } from "@/pages/article/article";
+import Article from "@/pages/article/article";
 import DetailPage from "@/pages/detail/[articleId]";
-import { Home } from "@/pages/home/home";
+import Home from "@/pages/home/home";
 import { useEffect, useState } from "react";
 import {
   Route,
