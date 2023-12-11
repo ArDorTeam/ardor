@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "start:prod": "npm run prebuild && npm run build && pm2 restart pm2.config.js",
+    "start:prod": "npm run prebuild && npm run build && pm2 restart pm2.config.js"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.0.3",
