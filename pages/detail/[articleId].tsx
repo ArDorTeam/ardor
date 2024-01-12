@@ -1,6 +1,8 @@
 import { ArticleType } from "@/lib/types";
+import ArticleContent from '@/pages/detail/component/ArticleConent';
 import { fetchAPI } from "@/utils/request";
-import { useEffect, useState } from "react";
+import dayjs from "dayjs";
+import { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
 
 type ArticleTypeProps = {
@@ -52,15 +54,15 @@ const DetailPage: React.FC<ArticleTypeProps> = ({ post }) => {
         <div >
             <header className="px-40 pt-10">
                 <div className="box-border mb-8 text-lg font-medium leading-none text-gray-500 uppercase" >
-                    By <span className="text-black">{somePostData.article_id}</span> in <span className="text-link-color" >{somePostData.group}</span> —  <span>{somePostData.gmt_modified}</span>
+                    By <span className="text-black">{somePostData.article_id}</span> —  <span> {dayjs(somePostData.gmt_modified).format('YYYY-MM-DD')}</span>
                 </div>
                 <h1 className='font-semibold leading-none text-7xl'>{somePostData.title}</h1>
                 <figure className="mt-10">
                     <img src={somePostData.cover_url} alt="示例图像" />
                 </figure>
             </header>
-            <section className="mt-16 px-80">
-                <div className="min-h-screen" dangerouslySetInnerHTML={{ __html: somePostData.content }} />
+            <section className="mt-16 px-80 min-h-screen">
+                <ArticleContent data={somePostData} />
             </section>
         </div>
     );
