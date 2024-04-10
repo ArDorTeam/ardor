@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import Header from "../components/header";
-import './styles/globals.scss';
-
+// import './styles/globals.scss';
 
 export const metadata: Metadata = {
   title: 'Ardor Blog',
@@ -17,9 +16,7 @@ export default function RootLayout({
     <html>
       <body>
         <Header />
-        <div>
-          {children}
-        </div>
+        {children}
       </body>
     </html>
   )

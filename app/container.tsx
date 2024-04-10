@@ -1,33 +1,19 @@
 
 "use client";
-import Nav from "@/components/nav";
-import { Path, SlotID } from "@/lib/global"; // 路由列表
-import About from "@/pages/about/about";
-import Article from "@/pages/article/article";
-import DetailPage from "@/pages/detail/[articleId]";
+import { SlotID } from "@/lib/global"; // 路由列表
 import Home from "@/pages/home/home";
 import { useEffect, useState } from "react";
-import {
-  Route,
-  BrowserRouter as Router,
-  Routes,
-} from "react-router-dom";
 
 
-function Screen() {
+const Screen = () => {
   return (
     <div className="w-full">
       {(
         // 因为里面有遍历Link,所以要包在router里面
         <>
-          <Nav />
+          {/* <Nav /> */}
           <div className="w-full" id={SlotID.AppBody}>
-            <Routes>
-              <Route path={Path.Home} element={<Home />} />
-              <Route path={Path.Article} element={<Article />} />
-              <Route path={Path.About} element={<About />} />
-              <Route path={Path.Detail} element={<DetailPage />} />
-            </Routes>
+            <Home />
           </div>
         </>
       )
@@ -58,8 +44,6 @@ export function Container() {
     return <Loading />;
   }
   return (
-    <Router>
-      <Screen />
-    </Router>
+    <Screen />
   );
 }

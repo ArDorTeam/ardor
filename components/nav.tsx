@@ -1,5 +1,3 @@
-// import { NAV_LISTS } from "@/lib/global";
-// console.log(NAV_LISTS);
 import { Link } from 'react-router-dom'
 const arr = [
     {
