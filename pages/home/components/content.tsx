@@ -1,23 +1,19 @@
-import { ListItemType, ListType } from "@/lib/types";
+import { CategoryListType, CategoryType, ListItemType, ListType } from "@/lib/types";
 import { fetchAPI } from "@/utils/request";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import styles from "./home.module.scss";
 
-const cateList = [
-    { id: 0, value: '', name: '全部类别' },
-    { id: 1, value: 'zjsj', name: '最佳实践' }
-]
-
 export default function Content() {
     const router  = useRouter();
-    const [activeId, setActiveId] = useState(0)
+    const [categoryId, setCategoryId] = useState('')
     const [blogList, setBlogList] = useState<ListItemType[]>([]);
+    const [cateList, setCateList] = useState<CategoryType[]>([]);
 
-    const Category = ({ cate }: any) => {
-        const itemClass = cate.id === activeId ? `${styles['cate-item']} ${styles.actived}` : styles['cate-item']
+    const Category = ({ cate }: { cate: CategoryType} ) => {
+        const itemClass = cate.category_id === categoryId ? `${styles['cate-item']} ${styles.actived}` : styles['cate-item']
         return (
-            <div className={itemClass} onClick={() => { setActiveId(cate.id) }} >{cate.name}</div>
+            <div className={itemClass} onClick={() => { setCategoryId(cate.category_id) }} >{cate.title}</div>
         )
     }
 
@@ -47,6 +43,7 @@ export default function Content() {
                 method: 'POST' as const,
                 data: {
                     "searchValue": "",
+                    "categoryId": categoryId,
                     "createTime": [],
                     "updateTime": [],
                     "offset": "1",
@@ -55,7 +52,6 @@ export default function Content() {
             };
             const response = await fetchAPI<ListType>(`/api/v1/article/getArticleList`, options);
             if (response.success) {
-                console.log(response.data);
                 if (response.data) {
                     const responseData = response.data;
                     setBlogList(responseData.list); // 列表数据
@@ -68,10 +64,37 @@ export default function Content() {
         }
     }
 
+    const getCateList = async () =>  {
+        try {
+            const options = {
+                method: 'POST' as const,
+                data:{}
+            };
+            const response = await fetchAPI<CategoryListType>(`/api/v1/category/getCategoryList`, options);
+            if (response.success) {
+                if (response.data) {
+                    const responseData = response.data;
+                    setCateList([
+                        {title: '全部分类', id: 0, category_id:'' },
+                        ...responseData.list
+                    ]); // 列表数据
+                }
+            } else {
+                console.error('获取数据失败：', response.error);
+            }
+        } catch (error: any) {
+            console.error('获取数据失败：', error.message);
+        }
+    }
+
     useEffect(() => {
-        // 调用 getList 函数来获取数据
-        getList();
+        getCateList();
     }, []);
+
+    useEffect(() => {
+        getList();
+    }, [categoryId]);
+
     return (
         <>
             <div className={styles.title}>博客</div>

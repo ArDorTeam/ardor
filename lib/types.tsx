@@ -11,7 +11,8 @@ export type ArticleType = {
     status: boolean,
     gmt_create: string,
     gmt_modified: string,
-    group?: any
+    group?: any;
+    isHtml?: boolean;
 };
 
 export type ListItemType = {
@@ -31,5 +32,16 @@ export type ListItemType = {
 
 export type ListType = {
     list: Array<ListItemType>,
+    totoal: number
+}
+
+export type CategoryType = {
+    title: string;
+    category_id: string;
+    id: number;
+}
+
+export type CategoryListType = {
+    list: Array<CategoryType>;
     totoal: number
 }

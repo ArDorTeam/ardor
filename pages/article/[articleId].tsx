@@ -1,6 +1,8 @@
 import Header from "@/components/header";
 import { ArticleType } from "@/lib/types";
 import { fetchAPI } from "@/utils/request";
+import { Viewer } from '@bytemd/react';
+import 'bytemd/dist/index.css';
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import './article.css';
@@ -25,7 +27,6 @@ const Article: React.FC<ArticleTypeProps> = () => {
                 const response = await fetchAPI(`/api/v1/article/getArticleDetail`, options);
 
                 if (response.success) {
-                    console.log(response.data);
                     setArticleDetail(response.data as ArticleType);
                 } else {
                     console.error('获取数据失败：', response.error);
@@ -38,11 +39,7 @@ const Article: React.FC<ArticleTypeProps> = () => {
 
     useEffect(() => {
         if (router.isReady) {
-            console.log(router.query);
-
             const { articleId } = router.query
-
-            console.log('articleId', articleId, router.query);
             fetchDetailData(articleId as string);
         }
     }, [router.isReady, router.query]);
@@ -55,10 +52,17 @@ const Article: React.FC<ArticleTypeProps> = () => {
         <div>
             <Header />
             <header className="pt-10 w-[1200px] mx-auto">
-                <h1 className='text-7xl font-semibold leading-none'>{articleDetail.title}</h1>
+                <h1 className='text-6xl font-semibold leading-none'>{articleDetail.title}</h1>
+                <h2 className='text-2xl leading-none text-right'>{articleDetail.sub_title}</h2>
             </header>
-            <section className="mt-16 break-word w-[1200px] mx-auto flex">
-                <div className="min-h-screen hl-edior3" dangerouslySetInnerHTML={{ __html: articleDetail.content }} />
+            <section className="mt-8 break-word w-[1200px] mx-auto flex">
+                {
+                    articleDetail.isHtml ?
+                        (<div className="hl-edior3" dangerouslySetInnerHTML={{ __html: articleDetail.content }} />)
+                        : (<div className="hl-edior3 Article_CSS_Doc" id="Article_CSS">
+                            <Viewer value={articleDetail.content}></Viewer>
+                        </div>)
+                }
             </section>
         </div>
     );

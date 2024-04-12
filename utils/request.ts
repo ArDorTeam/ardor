@@ -48,7 +48,6 @@ export const fetchAPI = async <T>(
 
     try {
         // const response = await fetch(`${apiUrl}/${endpoint}`, requestOptions);
-        console.log(requestOptions);
 
         const response = await fetch(`${endpoint}`, requestOptions);
         const responseData = await response.json();
