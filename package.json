@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "next build && next start -p 8030",
     "lint": "next lint",
     "start:prod": "npm run build && pm2 restart pm2.config.js"
   },

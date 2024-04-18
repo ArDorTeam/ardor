@@ -2,7 +2,7 @@
 const { createProxyMiddleware } = require('http-proxy-middleware');
 
 const nextConfig = {
-    output: 'export'
+    // output: 'export'
     // async rewrites() {
     //     return [
     //         {
