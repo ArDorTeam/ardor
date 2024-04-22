@@ -1,5 +1,6 @@
 import { CategoryListType, CategoryType, ListItemType, ListType } from "@/lib/types";
 import { fetchAPI } from "@/utils/request";
+import { Pagination, PaginationProps } from "antd";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import styles from "./home.module.scss";
@@ -7,6 +8,8 @@ import styles from "./home.module.scss";
 export default function Content() {
     const router  = useRouter();
     const [categoryId, setCategoryId] = useState('')
+    const [current, setCurrent] = useState(1);
+    const [total, setTotal] = useState(0);
     const [blogList, setBlogList] = useState<ListItemType[]>([]);
     const [cateList, setCateList] = useState<CategoryType[]>([]);
 
@@ -25,7 +28,6 @@ export default function Content() {
         return (
             <div className={styles['blog-item']} onClick={ () => handleClick(blog.article_id) }>
                 <div className={styles['blog-item-content']}>
-                    {/* <img src={"https://resource.helplook.net/docker_production/e4z9fp/article/56PtFk/cover/cover?rand=1602925730"} /> */}
                     <img src={blog.cover_url} />
                     <div className="px-6 pb-5 flex-1 flex flex-col justify-between">
                         <div className="mt-4 text-base font-semibold">{ blog.title }</div>
@@ -46,7 +48,7 @@ export default function Content() {
                     "categoryId": categoryId,
                     "createTime": [],
                     "updateTime": [],
-                    "offset": "1",
+                    "offset": current,
                     "length": "20"
                 }
             };
@@ -54,6 +56,7 @@ export default function Content() {
             if (response.success) {
                 if (response.data) {
                     const responseData = response.data;
+                    setTotal(responseData.total)
                     setBlogList(responseData.list); // 列表数据
                 }
             } else {
@@ -93,7 +96,11 @@ export default function Content() {
 
     useEffect(() => {
         getList();
-    }, [categoryId]);
+    }, [categoryId, current]);
+
+    const onChange: PaginationProps['onChange'] = (page) => {
+        setCurrent(page);
+    };
 
     return (
         <>
@@ -109,6 +116,7 @@ export default function Content() {
                 ))}
 
             </div>
+            <Pagination className={styles.pagenation} defaultCurrent={current} total={total} defaultPageSize={ 20 } onChange={ onChange } hideOnSinglePage showSizeChanger={false} />
         </>
     )
 }

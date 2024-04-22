@@ -32,7 +32,7 @@ export type ListItemType = {
 
 export type ListType = {
     list: Array<ListItemType>,
-    totoal: number
+    total: number
 }
 
 export type CategoryType = {

@@ -56,13 +56,9 @@ const Article: React.FC<ArticleTypeProps> = () => {
                 <h2 className='text-2xl leading-none text-right'>{articleDetail.sub_title}</h2>
             </header>
             <section className="mt-8 break-word w-[1200px] mx-auto flex">
-                {
-                    articleDetail.isHtml ?
-                        (<div className="hl-edior3" dangerouslySetInnerHTML={{ __html: articleDetail.content }} />)
-                        : (<div className="hl-edior3 Article_CSS_Doc" id="Article_CSS">
-                            <Viewer value={articleDetail.content}></Viewer>
-                        </div>)
-                }
+                <div className="hl-edior3 Article_CSS_Doc" id="Article_CSS">
+                    <Viewer value={articleDetail.content}></Viewer>
+                </div>
             </section>
         </div>
     );
