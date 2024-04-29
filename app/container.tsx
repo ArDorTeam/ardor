@@ -1,7 +1,7 @@
 
 "use client";
+import Home from "@/app/home/home";
 import { SlotID } from "@/lib/global"; // 路由列表
-import Home from "@/pages/home/home";
 import { useEffect, useState } from "react";
 
 

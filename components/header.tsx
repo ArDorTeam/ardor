@@ -15,7 +15,7 @@ export default function Header() {
     }
     return (
         <>
-            <div style={{borderBottom: "1px solid rgb(227, 232, 237)"}}>
+            <div style={{borderBottom: "1px solid rgb(227, 232, 237)"}} className='fixed w-full bg-white'>
                 <div className="w-[1200px] mx-auto items-center flex justify-between h-14">
                     <div className="text-4xl font-bold cursor-pointer" onClick={ backHome }>{ROOT_TITLE}</div>
                     <div>

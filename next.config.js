@@ -7,7 +7,7 @@ const nextConfig = {
     //     return [
     //         {
     //             source: '/api/:path*',
-    //             destination: 'http://172.18.17.204:8070/api/:path*', // 设置目标 API 的地址
+    //             destination: 'http://ardor.ak.xyz/api/:path*', // 设置目标 API 的地址
     //         },
     //     ];
     // },
